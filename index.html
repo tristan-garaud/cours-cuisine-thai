@@ -92,6 +92,16 @@
 
   .nb { white-space: nowrap; }
 
+  .dedication {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(22px, 5vw, 26px);
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .dedication strong { font-weight: 500; }
+
   .when {
     font-family: var(--serif);
     font-size: clamp(20px, 4.5vw, 23px);
@@ -184,9 +194,10 @@
       <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(315 24 24)"></ellipse>
       <circle cx="24" cy="24" r="3.1"></circle>
     </svg>
-    <p class="overline">Un cadeau gourmand</p>
+    <p class="overline">Un cadeau d'anniversaire</p>
     <h1>Un cours de cuisine <em>thaïlandaise</em></h1>
     <div class="rule"></div>
+    <p class="dedication">Pour <strong>Esmeralda Perez</strong></p>
     <p class="when">Lundi 14 septembre · <span class="nb">18 h 30 – 21 h 30</span></p>
   </header>
 
