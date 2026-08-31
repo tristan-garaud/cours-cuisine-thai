@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Un cours de cuisine thaïlandaise</title>
+<meta name="description" content="Un cours de cuisine thaïlandaise pour deux, le lundi 14 septembre aux Ateliers &amp; Saveurs du Vieux-Montréal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Karla:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #faf6ee;
+    --ink: #23201c;
+    --muted: #5d574c;
+    --sage: #97a291;
+    --green: #2f4f3e;
+    --brass: #a9762f;
+    --rule: #c7ac7d;
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    text-wrap: pretty;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--brass); }
+  a:hover { color: #7d561f; }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(32px, 7vw, 72px) clamp(20px, 6vw, 40px) 56px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 8vw, 64px);
+  }
+
+  .overline {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 500;
+  }
+
+  .rule {
+    width: 118px;
+    height: 1px;
+    flex-shrink: 0;
+    background: var(--rule);
+  }
+
+  /* --- en-tête --- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .masthead h1 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(26px, 6vw, 30px);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .masthead h1 em {
+    display: block;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(46px, 13vw, 62px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    color: var(--green);
+  }
+
+  .nb { white-space: nowrap; }
+
+  .when {
+    font-family: var(--serif);
+    font-size: clamp(20px, 4.5vw, 23px);
+  }
+
+  /* --- menu --- */
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .courses {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 100%;
+  }
+
+  .course {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .course h3 {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+  }
+
+  .course ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .course li {
+    font-family: var(--serif);
+    font-size: clamp(19px, 4.4vw, 21px);
+    line-height: 1.4;
+  }
+
+  .course li em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  /* --- pied de page --- */
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .venue {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(20px, 4.5vw, 23px);
+  }
+
+  footer .overline { margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="#a9762f" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(0 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(45 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(90 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(135 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(180 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(225 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(270 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(315 24 24)"></ellipse>
+      <circle cx="24" cy="24" r="3.1"></circle>
+    </svg>
+    <p class="overline">Un cadeau gourmand</p>
+    <h1>Un cours de cuisine <em>thaïlandaise</em></h1>
+    <div class="rule"></div>
+    <p class="when">Lundi 14 septembre · <span class="nb">18 h 30 – 21 h 30</span></p>
+  </header>
+
+  <section class="menu">
+    <h2 class="overline">Au menu</h2>
+
+    <div class="courses">
+
+      <div class="course">
+        <h3>Apéritif</h3>
+        <ul>
+          <li>Siam Sunrays</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h3>Entrées</h3>
+        <ul>
+          <li>Rouleaux de printemps aux légumes</li>
+          <li>Soupe thaïe aux crevettes épicées, lait de coco, cari rouge et coriandre</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h3>Plats</h3>
+        <ul>
+          <li>Pâte de curry vert thaïlandais</li>
+          <li>Riz frit au poulet <em>khao phat kaï</em>, ananas, basilic et zestes de lime</li>
+        </ul>
+      </div>
+
+      <div class="course">
+        <h3>Dessert</h3>
+        <ul>
+          <li>Mangue et riz gluant à la crème de coco <em>khao niao mamuang</em></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="rule"></div>
+    <p class="venue">Ateliers &amp; Saveurs — Vieux-Montréal</p>
+    <p class="overline">Deux places réservées</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
