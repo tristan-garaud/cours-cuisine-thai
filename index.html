@@ -19,6 +19,7 @@
     --rule: #c7ac7d;
     --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --sans: 'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --curtain: cubic-bezier(0.72, 0, 0.16, 1);
   }
 
   * { box-sizing: border-box; }
@@ -61,6 +62,8 @@
     background: var(--rule);
   }
 
+  .nb { white-space: nowrap; }
+
   /* --- en-tête --- */
 
   .masthead {
@@ -80,6 +83,8 @@
     line-height: 1.2;
   }
 
+  .masthead h1:focus { outline: none; }
+
   .masthead h1 em {
     display: block;
     font-style: italic;
@@ -89,8 +94,6 @@
     letter-spacing: 0;
     color: var(--green);
   }
-
-  .nb { white-space: nowrap; }
 
   .dedication {
     margin: 0;
@@ -103,6 +106,7 @@
   .dedication strong { font-weight: 500; }
 
   .when {
+    margin: 0;
     font-family: var(--serif);
     font-size: clamp(20px, 4.5vw, 23px);
   }
@@ -116,6 +120,8 @@
     gap: 28px;
     text-align: center;
   }
+
+  .menu h2 { margin: 0; }
 
   .courses {
     display: flex;
@@ -176,13 +182,154 @@
   }
 
   footer .overline { margin: 0; }
+
+  /* --- le rideau ---
+     Sans JavaScript, rien de tout ceci ne s'applique : la page
+     s'affiche directement, ouverte. */
+
+  .cover { display: none; }
+  .js body.is-sealed { overflow: hidden; }
+
+  .js .cover {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+  }
+
+  .js .cover[hidden] { display: none; }
+
+  .cover__panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50.5%;
+    background: var(--paper);
+    transition: transform 1s var(--curtain);
+    transition-delay: 0.28s;
+  }
+
+  .cover__panel--left { left: 0; }
+  .cover__panel--right { right: 0; box-shadow: -10px 0 22px -14px rgba(35, 32, 28, 0.22); }
+
+  .cover.is-opening .cover__panel--left { transform: translateX(-100%); }
+  .cover.is-opening .cover__panel--right { transform: translateX(100%); }
+
+  .cover__inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: opacity 0.26s ease;
+  }
+
+  .cover.is-opening .cover__inner {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .cover__name {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(34px, 9vw, 52px);
+    line-height: 1.1;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .seal {
+    transition: transform 0.9s var(--curtain);
+  }
+
+  .cover.is-opening .seal { transform: rotate(72deg) scale(0.82); }
+
+  .open {
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 0 28px;
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    background: transparent;
+    color: var(--brass);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-indent: 0.28em;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .open:hover {
+    background: var(--brass);
+    border-color: var(--brass);
+    color: var(--paper);
+  }
+
+  .open:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+    border-color: var(--brass);
+  }
+
+  /* --- l'apparition du contenu --- */
+
+  .js .rise {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .js .page.is-revealed .rise {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.75s ease, transform 0.75s var(--curtain);
+    transition-delay: var(--d, 0s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cover__panel,
+    .cover__inner,
+    .seal,
+    .js .page.is-revealed .rise {
+      transition-duration: 1ms !important;
+      transition-delay: 0s !important;
+    }
+  }
 </style>
 </head>
 <body>
 
-<div class="page">
+<div class="cover" id="cover">
+  <div class="cover__panel cover__panel--left"></div>
+  <div class="cover__panel cover__panel--right"></div>
+  <div class="cover__inner">
+    <svg class="seal" width="52" height="52" viewBox="0 0 48 48" fill="none" stroke="#a9762f" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(0 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(45 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(90 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(135 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(180 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(225 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(270 24 24)"></ellipse>
+      <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(315 24 24)"></ellipse>
+      <circle cx="24" cy="24" r="3.1"></circle>
+    </svg>
+    <p class="overline">Un cadeau d'anniversaire</p>
+    <p class="cover__name">Esmeralda Perez</p>
+    <button type="button" class="open" id="open">Ouvrir</button>
+  </div>
+</div>
 
-  <header class="masthead">
+<div class="page" id="page">
+
+  <header class="masthead rise" style="--d: 0.1s">
     <svg width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="#a9762f" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(0 24 24)"></ellipse>
       <ellipse cx="24" cy="13.5" rx="4.4" ry="9.2" transform="rotate(45 24 24)"></ellipse>
@@ -195,25 +342,25 @@
       <circle cx="24" cy="24" r="3.1"></circle>
     </svg>
     <p class="overline">Un cadeau d'anniversaire</p>
-    <h1>Un cours de cuisine <em>thaïlandaise</em></h1>
+    <h1 id="titre" tabindex="-1">Un cours de cuisine <em>thaïlandaise</em></h1>
     <div class="rule"></div>
     <p class="dedication">Pour <strong>Esmeralda Perez</strong></p>
     <p class="when">Lundi 14 septembre · <span class="nb">18 h 30 – 21 h 30</span></p>
   </header>
 
   <section class="menu">
-    <h2 class="overline">Au menu</h2>
+    <h2 class="overline rise" style="--d: 0.26s">Au menu</h2>
 
     <div class="courses">
 
-      <div class="course">
+      <div class="course rise" style="--d: 0.34s">
         <h3>Apéritif</h3>
         <ul>
           <li>Siam Sunrays</li>
         </ul>
       </div>
 
-      <div class="course">
+      <div class="course rise" style="--d: 0.42s">
         <h3>Entrées</h3>
         <ul>
           <li>Rouleaux de printemps aux légumes</li>
@@ -221,7 +368,7 @@
         </ul>
       </div>
 
-      <div class="course">
+      <div class="course rise" style="--d: 0.5s">
         <h3>Plats</h3>
         <ul>
           <li>Pâte de curry vert thaïlandais</li>
@@ -229,7 +376,7 @@
         </ul>
       </div>
 
-      <div class="course">
+      <div class="course rise" style="--d: 0.58s">
         <h3>Dessert</h3>
         <ul>
           <li>Mangue et riz gluant à la crème de coco <em>khao niao mamuang</em></li>
@@ -239,13 +386,73 @@
     </div>
   </section>
 
-  <footer>
+  <footer class="rise" style="--d: 0.68s">
     <div class="rule"></div>
     <p class="venue">Ateliers &amp; Saveurs — Vieux-Montréal</p>
     <p class="overline">Deux places réservées</p>
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  var cover = document.getElementById('cover');
+  var button = document.getElementById('open');
+  var page = document.getElementById('page');
+  var titre = document.getElementById('titre');
+
+  // Si quoi que ce soit ci-dessous casse, on rend la main à la page
+  // nue : sans la classe « js », le rideau disparaît et le contenu
+  // s'affiche en entier.
+  function abandon() {
+    root.classList.remove('js');
+    document.body.classList.remove('is-sealed');
+    page.removeAttribute('aria-hidden');
+  }
+
+  var opened = false;
+
+  function reveal() {
+    page.classList.add('is-revealed');
+    try { titre.focus({ preventScroll: true }); } catch (e) {}
+  }
+
+  function open() {
+    if (opened) return;
+    opened = true;
+
+    try {
+      cover.classList.add('is-opening');
+      page.removeAttribute('aria-hidden');
+      document.body.classList.remove('is-sealed');
+
+      // Le contenu monte pendant que les panneaux s'écartent.
+      setTimeout(reveal, 300);
+
+      // Une fois le rideau hors champ, on le retire du document.
+      setTimeout(function () { cover.hidden = true; }, 1700);
+
+      // Filet : quoi qu'il arrive, le contenu finit visible.
+      setTimeout(function () {
+        if (!page.classList.contains('is-revealed')) reveal();
+      }, 2500);
+    } catch (e) {
+      abandon();
+    }
+  }
+
+  try {
+    root.classList.add('js');
+    document.body.classList.add('is-sealed');
+    page.setAttribute('aria-hidden', 'true');
+    button.addEventListener('click', open);
+  } catch (e) {
+    abandon();
+  }
+})();
+</script>
 
 </body>
 </html>
